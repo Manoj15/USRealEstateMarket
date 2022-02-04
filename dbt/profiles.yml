@@ -1,0 +1,22 @@
+usrealestate:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      ######## Please replace with your Snowflake account name 
+      ######## for example sg_demo.ap-southeast-1
+      account: he72957.us-east-2.aws
+      # User/password auth
+      user: "{{ env_var('dbt_user') }}"
+      password: "{{ env_var('dbt_password') }}"
+
+      # user: "dbt_user"
+      ######## These environment variables dbt_user and dbt_password 
+      ######## are read from the variabls in Airflow which we will set later
+      # password: "dbt_user"
+
+      role: ACCOUNTADMIN
+      database: DEMO_DBT
+      warehouse: DBT_DEV_WH
+      schema: PUBLIC
+      threads: 200

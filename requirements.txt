@@ -1,0 +1,6 @@
+dbt==0.20.0
+dbt-core
+dbt-postgres
+dbt-redshift
+dbt-snowflake
+dbt-bigquery

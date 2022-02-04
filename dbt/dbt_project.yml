@@ -1,0 +1,19 @@
+name: usrealestate
+version: 1.0.0
+profile: usrealestate
+config-version: 2
+require-dbt-version: 0.20.0
+
+target-path: "dev"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+    - "dev"
+    - "dbt_modules"
+
+models:
+
+  usrealestate:
+      # Applies to all files under models/example/
+      transform:
+          enabled: true
+          schema: transform
+          materialized: view
