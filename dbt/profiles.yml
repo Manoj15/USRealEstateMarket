@@ -19,4 +19,4 @@ usrealestate:
       database: DEMO_DBT
       warehouse: DBT_DEV_WH
       schema: PUBLIC
-      threads: 200
+      threads: 1

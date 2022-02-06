@@ -6,6 +6,11 @@ from airflow.operators.bash import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 from datetime import datetime
 
+def write_csv_without_blank(df, file):
+    df.to_csv(file, index = False,line_terminator="")
+    file_data = open(file, 'rb').read()
+    open(file, 'wb').write(file_data[:-1])
+
 def source_data():
 
     dir = '/opt/airflow/dbt/data/'
@@ -15,10 +20,10 @@ def source_data():
     df_1 = pd.read_csv('data/RDC_Inventory_Core_Metrics_Zip.csv', skipfooter=1)
     df_2 = pd.read_csv('data/RDC_Inventory_Hotness_Metrics_Zip_History.csv', skipfooter=1)
 
-    df_1.to_csv('/opt/airflow/dbt/data/RDC_Inventory_Core_Metrics_Zip.csv', index = False)
-    df_2.to_csv('/opt/airflow/dbt/data/RDC_Inventory_Hotness_Metrics_Zip_History.csv', index = False)
-
-
+    # df_1.to_csv('/opt/airflow/dbt/data/RDC_Inventory_Core_Metrics_Zip.csv', index = False)
+    write_csv_without_blank(df_1, '/opt/airflow/dbt/data/RDC_Inventory_Core_Metrics_Zip.csv')
+    # df_2.to_csv('/opt/airflow/dbt/data/RDC_Inventory_Hotness_Metrics_Zip_History.csv', index = False)
+    write_csv_without_blank(df_2, '/opt/airflow/dbt/data/RDC_Inventory_Hotness_Metrics_Zip_History.csv')
 
 default_args = {
     'owner': 'airflow',
