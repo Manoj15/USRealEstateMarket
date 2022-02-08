@@ -1,4 +1,4 @@
-# USRealEstateMarket
+# US Real Estate Market 
 
 The motive of this is to design an end-to-end data pipeline for US Real Estate Market trends and monthly statistics. It sources the data from Realtor.com Real Estate Data Library (https://www.realtor.com/research/data/). It contains scores and rankings based on days on market (supply index) and realtor.com views per property (demand index). Data dictionary is in the same website. 
 
